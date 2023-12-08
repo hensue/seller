@@ -16,37 +16,41 @@ const Topbar = () => {
   const colorMode = useContext(ColorModeContext);
 
   return (
-    <Box display="flex" justifyContent="space-between" p={2}>
-      {/* SEARCH BAR */}
-      <Box
-        display="flex"
-        backgroundColor={colors.primary[400]}
-        borderRadius="3px"
-      >
-        <InputBase sx={{ ml: 3, flex: 1, width: 350 }} placeholder="Search" />
-        <IconButton type="button" sx={{ p: 1 }}>
-          <SearchIcon />
-        </IconButton>
-      </Box>
-
+    <Box>
       {/* ICONS */}
-      <Box display="flex">
-        <IconButton onClick={colorMode.toggleColorMode}>
+      <Box display="flex" justifyContent="flex-end" p={2} pb={0}>
+        {/* <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (
             <DarkModeOutlinedIcon />
           ) : (
             <LightModeOutlinedIcon />
           )}
         </IconButton>
-        {/* <IconButton>
-          <NotificationsOutlinedIcon />
-        </IconButton>
         <IconButton>
+          <NotificationsOutlinedIcon />
+        </IconButton> */}
+        <IconButton style={{ color: "black" }}>
           <SettingsOutlinedIcon />
         </IconButton>
-        <IconButton>
+        <IconButton style={{ color: "black" }}>
           <PersonOutlinedIcon />
-        </IconButton> */}
+        </IconButton>
+      </Box>
+      <Box display="flex" justifyContent="flex-start" p={2} pb={0}>
+        {/* SEARCH BAR */}
+        <Box
+          display="flex"
+          backgroundColor={colors.primary[50]}
+          borderRadius="10px"
+        >
+          <InputBase
+            sx={{ ml: 3, flex: 1, width: 350, color: "black" }}
+            placeholder="Search Products"
+          />
+          <IconButton type="button" sx={{ p: 1, color: "black" }}>
+            <SearchIcon />
+          </IconButton>
+        </Box>
       </Box>
     </Box>
   );

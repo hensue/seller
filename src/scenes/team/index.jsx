@@ -11,7 +11,7 @@ const Team = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
-    { field: "id", headerName: "ID" },
+    { field: "id", headerName: "ID", cellClassName: "name-column--cell" },
     {
       field: "name",
       headerName: "Name",
@@ -24,20 +24,24 @@ const Team = () => {
       type: "number",
       headerAlign: "left",
       align: "left",
+      cellClassName: "name-column--cell"
     },
     {
       field: "phone",
       headerName: "Phone Number",
       flex: 1,
+      cellClassName: "name-column--cell"
     },
     {
       field: "email",
       headerName: "Email",
       flex: 1,
+      cellClassName: "name-column--cell"
     },
     {
       field: "accessLevel",
       headerName: "Access Level",
+      cellClassName: "name-column--cell",
       flex: 1,
       renderCell: ({ row: { access } }) => {
         return (
@@ -70,37 +74,40 @@ const Team = () => {
 
   return (
     <Box m="20px">
-      <Header title="TEAM" subtitle="Managing the Team Members" />
+      {/* <Header title="TEAM" subtitle="Managing the Team Members" /> */}
       <Box
         m="40px 0 0 0"
         height="75vh"
         sx={{
           "& .MuiDataGrid-root": {
-            border: "none",
+            border: "none !important"
           },
           "& .MuiDataGrid-cell": {
-            borderBottom: "none",
+            border: "none !important"
           },
           "& .name-column--cell": {
-            color: colors.greenAccent[300],
+            color: colors.primary[500],
+            border: "none !important"
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: colors.greenAccent[700],
-            borderBottom: "none",
+            border: "none !important"
           },
           "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[400],
+            backgroundColor: colors.primary[50],
+            border: "none !important"
           },
           "& .MuiDataGrid-footerContainer": {
-            borderTop: "none",
+            border: "none !important",
             backgroundColor: colors.greenAccent[700],
           },
           "& .MuiCheckbox-root": {
+            border: "none !important",
             color: `${colors.greenAccent[200]} !important`,
           },
         }}
       >
-        <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+        <DataGrid rows={mockDataTeam} columns={columns} />
       </Box>
     </Box>
   );

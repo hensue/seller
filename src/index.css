@@ -13,6 +13,7 @@ body,
 .app {
   display: flex;
   position: relative;
+  background: linear-gradient(257deg,#e5ffea,rgba(224,255,229,0));
 }
 
 ::-webkit-scrollbar {
@@ -26,7 +27,7 @@ body,
 
 /* Handle */
 ::-webkit-scrollbar-thumb{
-  background: #888
+  background: #4cceac
 }
 
 /* Handle on Hover */
