@@ -1,17 +1,19 @@
-import { Box, Typography, useTheme } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import * as React from "react";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataTeam } from "../../data/mockData";
-import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
-import Header from "../../components/Header";
+import { Box,useTheme } from "@mui/material";
 
-const Team = () => {
+export default function ColumnSelectorGrid() {
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
-    { field: "id", headerName: "ID", cellClassName: "name-column--cell" },
+    {
+      field: "photo",
+      headerName: "Photo",
+      cellClassName: "name-column--cell",
+    },
     {
       field: "name",
       headerName: "Name",
@@ -19,83 +21,127 @@ const Team = () => {
       cellClassName: "name-column--cell",
     },
     {
-      field: "age",
-      headerName: "Age",
-      type: "number",
+      field: "productName",
+      headerName: "Product Name",
       headerAlign: "left",
       align: "left",
-      cellClassName: "name-column--cell"
-    },
-    {
-      field: "phone",
-      headerName: "Phone Number",
-      flex: 1,
-      cellClassName: "name-column--cell"
-    },
-    {
-      field: "email",
-      headerName: "Email",
-      flex: 1,
-      cellClassName: "name-column--cell"
-    },
-    {
-      field: "accessLevel",
-      headerName: "Access Level",
       cellClassName: "name-column--cell",
+    },
+    {
+      field: "shopeName",
+      headerName: "Shop Name",
       flex: 1,
-      renderCell: ({ row: { access } }) => {
-        return (
-          <Box
-            width="60%"
-            m="0 auto"
-            p="5px"
-            display="flex"
-            justifyContent="center"
-            backgroundColor={
-              access === "admin"
-                ? colors.grey[400]
-                : access === "manager"
-                ? colors.grey[500]
-                : colors.grey[500]
-            }
-            borderRadius="4px"
-          >
-            {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
-            {access === "manager" && <SecurityOutlinedIcon />}
-            {access === "user" && <LockOpenOutlinedIcon />}
-            <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-              {access}
-            </Typography>
-          </Box>
-        );
-      },
+      cellClassName: "name-column--cell",
+    },
+    {
+      field: "price",
+      headerName: "Price",
+      flex: 1,
+      cellClassName: "name-column--cell",
+    },
+    {
+      field: "moRevenue",
+      headerName: "Mo.Revenue",
+      flex: 1,
+      cellClassName: "name-column--cell",
+    },
+    {
+      field: "totalSales",
+      headerName: "Total Sales",
+      flex: 1,
+      cellClassName: "name-column--cell",
+    },
+    {
+      field: "reviews",
+      headerName: "Reviews",
+      flex: 1,
+      cellClassName: "name-column--cell",
+    },
+    {
+      field: "listingAge",
+      headerName: "Listing Age",
+      flex: 1,
+      cellClassName: "name-column--cell",
+    },
+    {
+      field: "favorites",
+      headerName: "Favorites",
+      flex: 1,
+      cellClassName: "name-column--cell",
+    },
+    {
+      field: "avgReviews",
+      headerName: "Avg Reviews",
+      flex: 1,
+      cellClassName: "name-column--cell",
+    },
+    {
+      field: "views",
+      headerName: "Views",
+      flex: 1,
+      cellClassName: "name-column--cell",
+    },
+    {
+      field: "category",
+      headerName: "Category",
+      flex: 1,
+      cellClassName: "name-column--cell",
+    },
+    {
+      field: "shopAge",
+      headerName: "Shop Age",
+      flex: 1,
+      cellClassName: "name-column--cell",
+    },
+    {
+      field: "visibilityScore",
+      headerName: "Visibility Score",
+      flex: 1,
+      cellClassName: "name-column--cell",
+    },
+    {
+      field: "conversionRate",
+      headerName: "Conversion Rate",
+      flex: 1,
+      cellClassName: "name-column--cell",
+    },
+    {
+      field: "totalShopSales",
+      headerName: "Total Shop Sales",
+      flex: 1,
+      cellClassName: "name-column--cell",
     },
   ];
 
   return (
-    <Box m="20px">
-      {/* <Header title="TEAM" subtitle="Managing the Team Members" /> */}
+    <div style={{margin: "20px", display: 'flex',
+    flexDirection: 'column',
+    overflowX: 'scroll', }}>
       <Box
         m="40px 0 0 0"
+        width="100%"
         height="75vh"
+        display= 'flex'
+        flexDirection= 'column'
+        overflowX= 'scroll'
         sx={{
           "& .MuiDataGrid-root": {
-            border: "none !important"
+            border: "none !important",
           },
           "& .MuiDataGrid-cell": {
-            border: "none !important"
+            border: "none !important",
           },
           "& .name-column--cell": {
             color: colors.primary[500],
-            border: "none !important"
+            border: "none !important",
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: colors.greenAccent[700],
-            border: "none !important"
+            border: "none !important",
           },
           "& .MuiDataGrid-virtualScroller": {
             backgroundColor: colors.primary[50],
-            border: "none !important"
+            border: "none !important",
           },
           "& .MuiDataGrid-footerContainer": {
             border: "none !important",
@@ -107,10 +153,24 @@ const Team = () => {
           },
         }}
       >
-        <DataGrid rows={mockDataTeam} columns={columns} />
+        <DataGrid
+          rows={mockDataTeam}
+          columns={columns}
+          slots={{
+            toolbar: GridToolbar,
+          }}
+          initialState={{
+            ...mockDataTeam.initialState,
+            pagination: {
+              ...mockDataTeam.initialState?.pagination,
+              paginationModel: {
+                pageSize: 25,
+                /* page: 0 // default value will be used if not passed */
+              },
+            },
+          }}
+        />
       </Box>
-    </Box>
+    </div>
   );
-};
-
-export default Team;
+}
