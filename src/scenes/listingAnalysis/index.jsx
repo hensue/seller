@@ -305,7 +305,7 @@ export default function Contacts() {
               style={{
                 width: 250,
                 height: 300,
-                backgroundColor: "#4cceac",
+                backgroundColor: "#76d4ac",
                 borderRadius: 5,
               }}
             >
@@ -313,7 +313,7 @@ export default function Contacts() {
                 style={{
                   display: "flex",
                   justifyContent: "center",
-                  alignItems: "center",
+                  marginBottom: 20
                 }}
               >
                 <img
@@ -344,14 +344,14 @@ export default function Contacts() {
                 borderRadius: 5,
               }}
             >
-              <h2 style={{ color: "blue" }}>Listing Metrics</h2>
+              <h2 style={{ color: "#5368e0" }}>Listing Metrics</h2>
               <p
                 style={{
                   paddingTop: 10,
                   color: "black",
                   display: "flex",
                   justifyContent: "space-between",
-                  borderBottom: "1px grey solid",
+                  borderBottom: "1px #f0e8e8 solid",
                 }}
               >
                 <span>Estimated Sales</span>
@@ -363,7 +363,7 @@ export default function Contacts() {
                   paddingTop: 10,
                   display: "flex",
                   justifyContent: "space-between",
-                  borderBottom: "1px grey solid",
+                  borderBottom: "1px #f0e8e8 solid",
                 }}
               >
                 <span>Estimated Revenue</span>
@@ -375,7 +375,7 @@ export default function Contacts() {
                   paddingTop: 10,
                   display: "flex",
                   justifyContent: "space-between",
-                  borderBottom: "1px grey solid",
+                  borderBottom: "1px #f0e8e8 solid",
                 }}
               >
                 <span>Estimated Conversion Rate</span>
@@ -387,7 +387,7 @@ export default function Contacts() {
                   paddingTop: 10,
                   display: "flex",
                   justifyContent: "space-between",
-                  borderBottom: "1px grey solid",
+                  borderBottom: "1px #f0e8e8 solid",
                 }}
               >
                 <span>Daily Views</span>
@@ -399,7 +399,7 @@ export default function Contacts() {
                   paddingTop: 10,
                   display: "flex",
                   justifyContent: "space-between",
-                  borderBottom: "1px grey solid",
+                  borderBottom: "1px #f0e8e8 solid",
                 }}
               >
                 <span>Views</span>
@@ -411,7 +411,7 @@ export default function Contacts() {
                   paddingTop: 10,
                   display: "flex",
                   justifyContent: "space-between",
-                  borderBottom: "1px grey solid",
+                  borderBottom: "1px #f0e8e8 solid",
                 }}
               >
                 <span>Favorites</span>
@@ -423,7 +423,7 @@ export default function Contacts() {
                   paddingTop: 10,
                   display: "flex",
                   justifyContent: "space-between",
-                  borderBottom: "1px grey solid",
+                  borderBottom: "1px #f0e8e8 solid",
                 }}
               >
                 <span>Quantity Available</span>
@@ -435,7 +435,7 @@ export default function Contacts() {
                   paddingTop: 10,
                   display: "flex",
                   justifyContent: "space-between",
-                  borderBottom: "1px grey solid",
+                  borderBottom: "1px #f0e8e8 solid",
                 }}
               >
                 <span>Visibility</span>
@@ -446,21 +446,19 @@ export default function Contacts() {
               style={{
                 width: 250,
                 height: 300,
-                marginLeft: 10,
-                marginRight: 10,
                 padding: 10,
                 backgroundColor: "white",
                 borderRadius: 5,
               }}
             >
-              <h2 style={{ color: "blue" }}>History</h2>
+              <h2 style={{ color: "#5368e0  " }}>History</h2>
               <p
                 style={{
                   paddingTop: 10,
                   color: "black",
                   display: "flex",
                   justifyContent: "space-between",
-                  borderBottom: "1px grey solid",
+                  borderBottom: "1px #f0e8e8 solid",
                 }}
               >
                 <span>Listing Age</span>
@@ -472,7 +470,7 @@ export default function Contacts() {
                   paddingTop: 10,
                   display: "flex",
                   justifyContent: "space-between",
-                  borderBottom: "1px grey solid",
+                  borderBottom: "1px #f0e8e8 solid",
                 }}
               >
                 <span>Created</span>
@@ -484,7 +482,7 @@ export default function Contacts() {
                   paddingTop: 10,
                   display: "flex",
                   justifyContent: "space-between",
-                  borderBottom: "1px grey solid",
+                  borderBottom: "1px #f0e8e8 solid",
                 }}
               >
                 <span>Last Updated</span>
@@ -496,7 +494,7 @@ export default function Contacts() {
                   paddingTop: 10,
                   display: "flex",
                   justifyContent: "space-between",
-                  borderBottom: "1px grey solid",
+                  borderBottom: "1px #f0e8e8 solid",
                 }}
               >
                 <span>Expiry</span>

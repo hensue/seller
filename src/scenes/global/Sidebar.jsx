@@ -79,28 +79,30 @@ const Sidebar = () => {
             {!isCollapsed && (
               <Box
                 display="flex"
-                justifyContent="space-center"
-                alignItems="center"
+                justifyContent="center"
                 // ml="15px"
-                ml="50px"
+                
               >
-                <img
-                  alt="profile-user"
-                  width="105"
-                  height="105"
-                  src="./7.png"
-                  style={{
-                    cursor: "pointer",
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                  }}
-                />
+                <a href="/">
+                  <img
+                    alt="profile-user"
+                    width="105"
+                    height="105"
+                    src="./7.png"
+                    style={{
+                      cursor: "pointer",
+                      objectFit: "cover",
+                      borderRadius: "50%",
+                    }}
+                  />
+                </a>
+
                 {/* <Typography
                   onClick={() => setIsCollapsed(!isCollapsed)}
                   variant="h3"
                   color={colors.grey[900]}
                 >
-                  Ewolove
+                  Ewolve
                 </Typography> */}
                 {/* <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />

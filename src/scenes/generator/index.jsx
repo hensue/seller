@@ -102,7 +102,7 @@ const Generator = () => {
                 sx={{ gridColumn: "span 4" }}
               />
             </Box>
-            <Box display="flex" justifyContent="end" mt="20px">
+            <Box display="flex" justifyContent="center" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
                 Generate
               </Button>

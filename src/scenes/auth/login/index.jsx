@@ -23,8 +23,8 @@ const Login = () => {
   };
 
   return (
-    <Box pt="30vh" ml="10rem" mr="10rem" height="100vh">
-      <Header title="LOGIN" subtitle="Please Login to Ewolove" />
+    <Box pt="30vh" ml="20rem" mr="20rem" height="100vh">
+      <Header title="LogIn" subtitle="Please Login to Ewolve" />
 
       <Formik
         onSubmit={handleFormSubmit}
@@ -85,7 +85,7 @@ const Login = () => {
                 sx={{ gridColumn: "span 4" }}
               />
             </Box>
-            <Box display="flex" justifyContent="end" mt="2vh">
+            <Box display="flex" justifyContent="center" mt="3vh">
               <Button type="submit" color="secondary" variant="contained">
                 Login
               </Button>

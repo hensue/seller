@@ -24,8 +24,8 @@ const Register = () => {
   };
 
   return (
-    <Box pt="25vh" ml="10rem" mr="10rem" height="100vh">
-      <Header title="SIGNUP" subtitle="Please SignUp to Ewolove" />
+    <Box pt="25vh" ml="20rem" mr="20rem" height="100vh">
+      <Header title="SignUp" subtitle="Please SignUp to Ewolve" />
 
       <Formik
         onSubmit={handleFormSubmit}
@@ -140,7 +140,7 @@ const Register = () => {
                 sx={{ gridColumn: "span 4" }}
               />
             </Box>
-            <Box display="flex" justifyContent="end" mt="20px">
+            <Box display="flex" justifyContent="center" mt="3vh">
               <Button type="submit" color="secondary" variant="contained">
                 SignUp
               </Button>

@@ -82,6 +82,7 @@ const Dashboard = () => {
           gridRow="span 2"
           backgroundColor={colors.blueAccent[500]}
           p="30px"
+          borderRadius={5}
         >
           <Typography variant="h5" fontWeight="600">
             Campaign
@@ -107,6 +108,7 @@ const Dashboard = () => {
           gridColumn="span 5"
           gridRow="span 2"
           backgroundColor={colors.blueAccent[600]}
+          borderRadius={5}
         >
           <Typography
             variant="h5"
@@ -124,6 +126,7 @@ const Dashboard = () => {
           gridRow="span 2"
           backgroundColor={colors.blueAccent[500]}
           padding="30px"
+          borderRadius={5}
         >
           <Typography
             variant="h5"
@@ -144,6 +147,7 @@ const Dashboard = () => {
           display="flex"
           alignItems="center"
           justifyContent="center"
+          borderRadius={5}
         >
           <StatBox
             title="12,361"
@@ -163,6 +167,7 @@ const Dashboard = () => {
           display="flex"
           alignItems="center"
           justifyContent="center"
+          borderRadius={5}
         >
           <StatBox
             title="431,225"
@@ -182,6 +187,7 @@ const Dashboard = () => {
           display="flex"
           alignItems="center"
           justifyContent="center"
+          borderRadius={5}
         >
           <StatBox
             title="32,441"
@@ -201,6 +207,7 @@ const Dashboard = () => {
           display="flex"
           alignItems="center"
           justifyContent="center"
+          borderRadius={5}
         >
           <StatBox
             title="1,325,134"
@@ -220,6 +227,7 @@ const Dashboard = () => {
           display="flex"
           alignItems="center"
           justifyContent="center"
+          borderRadius={5}
         >
           <StatBox
             title="1,325"
@@ -240,6 +248,7 @@ const Dashboard = () => {
           gridRow="span 2"
           backgroundColor={colors.blueAccent[500]}
           overflow="auto"
+          borderRadius={5}
         >
           <Box
             display="flex"
@@ -289,6 +298,7 @@ const Dashboard = () => {
           gridColumn="span 12"
           gridRow="span 2"
           backgroundColor={colors.blueAccent[500]}
+          borderRadius={5}
         >
           <Box
             mt="25px"

@@ -93,7 +93,7 @@ export default function SpotLight() {
   return (
     <Box p="20px"  height="100vh" >
       <Topbar></Topbar>
-      <Box display="flex" pl="20px" pr="20px" flex="1">
+      <Box display="flex" flex="1">
       <Box
         flex="0.2"
         m="40px 0 0 0"
