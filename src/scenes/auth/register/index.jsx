@@ -5,6 +5,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../../components/Header";
 
 const Register = () => {
+
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const handleFormSubmit = (values) => {
@@ -23,7 +24,7 @@ const Register = () => {
   };
 
   return (
-    <Box m="5rem 10rem" height="81.5vh">
+    <Box pt="25vh" ml="10rem" mr="10rem" height="100vh">
       <Header title="SIGNUP" subtitle="Please SignUp to Ewolove" />
 
       <Formik

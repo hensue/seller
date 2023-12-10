@@ -33,7 +33,7 @@ const Generator = () => {
    };
 
   return (
-    <Box m="5rem 10rem">
+    <Box pt="5rem" pl="10rem" pr="10rem" height="100vh">
       <Header
         title="Listing Generator"
         subtitle="Etsy Description Generatpr, AI Written, SEO Optimized Description with One Click."

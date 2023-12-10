@@ -69,7 +69,7 @@ const Sidebar = () => {
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
           <MenuItem
-            onClick={() => setIsCollapsed(!isCollapsed)}
+            // onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
               margin: "10px 0 20px 0",
@@ -82,25 +82,26 @@ const Sidebar = () => {
                 justifyContent="space-center"
                 alignItems="center"
                 // ml="15px"
+                ml="50px"
               >
                 <img
                   alt="profile-user"
-                  width="50"
-                  height="50px"
-                  src={`https://images.unsplash.com/photo-1615572359976-1fe39507ed7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJsYWNrJTIwbWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`}
+                  width="105"
+                  height="105"
+                  src="./7.png"
                   style={{
                     cursor: "pointer",
                     objectFit: "cover",
                     borderRadius: "50%",
                   }}
                 />
-                <Typography
+                {/* <Typography
                   onClick={() => setIsCollapsed(!isCollapsed)}
                   variant="h3"
                   color={colors.grey[900]}
                 >
                   Ewolove
-                </Typography>
+                </Typography> */}
                 {/* <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
                 </IconButton> */}
@@ -181,28 +182,34 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Listing Generator"
-              to="/generator"
-              icon={<CreateOutlined />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Contacts Information"
+              title="Listing Analysis"
               to="/contacts"
               icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Invoices Balances"
+              title="Watch List"
               to="/invoices"
               icon={<ReceiptOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-
-            <Typography
+            <Item
+              title="Spotlight"
+              to="/spot"
+              icon={<BarChartOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Listing Generator"
+              to="/generator"
+              icon={<CreateOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            {/* <Typography
               variant="h6"
               color={colors.grey[800]}
               sx={{ m: "15px 0 5px 20px" }}
@@ -229,7 +236,7 @@ const Sidebar = () => {
               icon={<HelpOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
 
             {/* <Typography
               variant="h6"

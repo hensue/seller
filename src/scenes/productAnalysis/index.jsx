@@ -3,9 +3,10 @@ import { useState } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataTeam } from "../../data/mockData";
-import { Box, useTheme } from "@mui/material";
+import { Box, useTheme, Button } from "@mui/material";
 import LockIcon from "@mui/icons-material/Lock";
-import Sidebar from "../../scenes/global/Sidebar1";
+import Sidebar from "../global/Sidebar1";
+import Topbar from "../../scenes/global/Topbar";
 
 export default function ColumnSelectorGrid() {
   const [selectedRow, setSelectedRow] = useState(null);
@@ -176,7 +177,8 @@ export default function ColumnSelectorGrid() {
   };
 
   return (
-    <Box m="20px" height="81.5vh">
+    <Box p="20px" height="100vh">
+      <Topbar></Topbar>
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -220,6 +222,7 @@ export default function ColumnSelectorGrid() {
         />
       </Box>
       {isModalOpen && <Sidebar rowData={selectedRow} onClose={closeModal} />}
+      
     </Box>
   );
 }

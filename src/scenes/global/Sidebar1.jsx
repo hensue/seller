@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { Box, IconButton, Typography, useTheme } from "@mui/material";
+import { Box, IconButton, Typography, useTheme, Button, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
@@ -10,6 +10,10 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { mockDataTeam } from "../../data/mockData";
+import { Modal, ModalBody } from "react-modern-modal";
+import { Formik } from "formik";
+import * as yup from "yup";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
@@ -44,6 +48,46 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 };
 
 const Sidebar1 = ({ onClose }) => {
+
+  const phoneRegExp =
+  /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
+
+const checkoutSchema = yup.object().shape({
+  firstName: yup.string().required("required"),
+  lastName: yup.string().required("required"),
+  email: yup.string().email("invalid email").required("required"),
+  contact: yup
+    .string()
+    .matches(phoneRegExp, "Phone number is not valid")
+    .required("required"),
+  password: yup.string().required("required"),
+  address2: yup.string().required("required"),
+});
+const initialValues = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  contact: "",
+  password: "",
+  address2: "",
+};
+  
+  const isNonMobile = useMediaQuery("(min-width:600px)");
+
+  const handleFormSubmit = (values) => {
+    console.log(values);
+  };
+
+  const inputStyles = {
+   backgroundColor:'white',
+   color:'black',
+   borderRadius: '10px'
+  }
+  const inputLabelStyles = {
+    backgroundColor: "white",
+    color: "black",
+  };
+
   const columns = [
     {
       field: "name",
@@ -79,6 +123,10 @@ const Sidebar1 = ({ onClose }) => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpen = () => setIsOpen(true);
+  const handleClose = () => setIsOpen(false);
 
   return (
     <Box
@@ -131,6 +179,7 @@ const Sidebar1 = ({ onClose }) => {
               </Typography>
               <IconButton>
                 <CalculatorOutlinedIcon
+                  onClick={handleOpen}
                   style={{ color: "blue", marginRight: "15px" }}
                 />
                 <CloseIcon onClick={onClose} style={{ color: "black" }} />
@@ -243,8 +292,12 @@ const Sidebar1 = ({ onClose }) => {
                   <Typography>Avg. Conv. Rate</Typography>
                   <Typography>11.58%</Typography>
                 </Box>
-                <Box width="50%" textAlign="center" borderLeft={`1px solid ${colors.primary[700]}`}
-                  borderBottom={`1px solid ${colors.primary[700]}`}>
+                <Box
+                  width="50%"
+                  textAlign="center"
+                  borderLeft={`1px solid ${colors.primary[700]}`}
+                  borderBottom={`1px solid ${colors.primary[700]}`}
+                >
                   <Typography>Category</Typography>
                   <Typography>Clothing</Typography>
                 </Box>
@@ -258,10 +311,13 @@ const Sidebar1 = ({ onClose }) => {
                 >
                   <Typography>Avg. Visibility Score</Typography>
                   <Typography>Clothing</Typography>
-                  
                 </Box>
-                <Box width="50%" textAlign="center"  borderLeft={`1px solid ${colors.primary[700]}`}
-                  borderTop={`1px solid ${colors.primary[700]}`}>
+                <Box
+                  width="50%"
+                  textAlign="center"
+                  borderLeft={`1px solid ${colors.primary[700]}`}
+                  borderTop={`1px solid ${colors.primary[700]}`}
+                >
                   <Typography>Review Ratio</Typography>
                   <Typography>9.09%</Typography>
                 </Box>
@@ -482,6 +538,194 @@ const Sidebar1 = ({ onClose }) => {
           </MenuItem>
         </Menu>
       </ProSidebar>
+      <Modal size="lg" isOpen={isOpen} onClose={handleClose}>
+        {/* <ModalHeader>Sign Up</ModalHeader> */}
+        <ModalBody style={{ backgroundColor: "white" }}>
+          <div style={{ display: "flex" }}>
+            <div className="calculator">
+              <h1 style={{ color: "black", marginBottom:'2vh' }}>Profile Calculator</h1>
+
+              <Formik
+                onSubmit={handleFormSubmit}
+                initialValues={initialValues}
+                validationSchema={checkoutSchema}
+              >
+                {({
+                  values,
+                  errors,
+                  touched,
+                  handleBlur,
+                  handleChange,
+                  handleSubmit,
+                }) => (
+                  <form onSubmit={handleSubmit}>
+                    <Box
+                      display="grid"
+                      gap="30px"
+                      gridTemplateColumns="repeat(4, minmax(0, 1fr))"
+                      sx={{
+                        "& > div": {
+                          gridColumn: isNonMobile ? undefined : "span 4",
+                        },
+                      }}
+                    >
+                      <TextField
+                        fullWidth
+                        variant="filled"
+                        type="text"
+                        label="Selling Price(USD)"
+                        InputProps={{ style: inputStyles }}
+                        InputLabelProps={{ style: inputLabelStyles }}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        value={values.email}
+                        name="sell"
+                        error={!!touched.email && !!errors.email}
+                        helperText={touched.email && errors.email}
+                        sx={{ gridColumn: "span 4" }}
+                      />
+                      <TextField
+                        fullWidth
+                        variant="filled"
+                        type="text"
+                        label="Product Cost(USD)"
+                        InputProps={{ style: inputStyles }}
+                        InputLabelProps={{ style: inputLabelStyles }}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        value={values.password}
+                        name="product"
+                        error={!!touched.password && !!errors.password}
+                        helperText={touched.password && errors.password}
+                        sx={{ gridColumn: "span 4" }}
+                      />
+                       <TextField
+                        fullWidth
+                        variant="filled"
+                        type="text"
+                        label="Shipping Cost(USD)"
+                        InputProps={{ style: inputStyles }}
+                        InputLabelProps={{ style: inputLabelStyles }}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        value={values.password}
+                        name="ship"
+                        error={!!touched.password && !!errors.password}
+                        helperText={touched.password && errors.password}
+                        sx={{ gridColumn: "span 4" }}
+                      />
+                    </Box>
+                    <Box display="flex" justifyContent="start" mt="2vh">
+                      <Button
+                        type="submit"
+                        color="secondary"
+                        variant="contained"
+                      >
+                        Calculate
+                      </Button>
+                    </Box>
+                  </form>
+                )}
+              </Formik>
+
+              {/* <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: "10px",
+                }}
+              >
+                <Button
+                  style={{ backgroundColor: "white", borderRadius: "10px" }}
+                  type="submit"
+                  color="secondary"
+                  variant="contained"
+                >
+                  Calculate
+                </Button>
+              </div> */}
+            </div>
+            <div className="calculator1">
+              <h1 style={{ color: "black", marginBottom:'2vh' }}>Calculation Results</h1>
+              <p
+                style={{
+                  paddingTop: 10,
+                  color: "black",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  borderBottom: "1px grey solid",
+                }}
+              >
+                <span>Listing Fee</span>
+                <span>0.00USD</span>
+              </p>
+              <p
+                style={{
+                  color: "black",
+                  paddingTop: 20,
+                  display: "flex",
+                  justifyContent: "space-between",
+                  borderBottom: "1px grey solid",
+                }}
+              >
+                <span>Transaction Fee</span>
+                <span>0.00USD</span>
+              </p>
+              <p
+                style={{
+                  color: "black",
+                  paddingTop: 20,
+                  display: "flex",
+                  justifyContent: "space-between",
+                  borderBottom: "1px grey solid",
+                }}
+              >
+                <span>Processing Fee</span>
+                <span>0.00USD</span>
+              </p>
+              <p
+                style={{
+                  color: "black",
+                  paddingTop: 20,
+                  display: "flex",
+                  justifyContent: "space-between",
+                  borderBottom: "1px grey solid",
+                }}
+              >
+                <span>Total Cost</span>
+                <span>0.00USD</span>
+              </p>
+              <p
+                style={{
+                  color: "black",
+                  marginTop: 30,
+                  padding: 10,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  backgroundColor: "grey",
+                  // background: 'transparent'
+                  // borderBottom: "1px grey solid",
+                }}
+              >
+                <span>Profit</span>
+                <span>0.00USD</span>
+              </p>
+              <p
+                style={{
+                  color: "black",
+                  paddingTop: 20,
+                  fontSize: "10px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                This calculation is a rough estimate and subject to change.
+              </p>
+            </div>
+          </div>
+        </ModalBody>
+      </Modal>
     </Box>
   );
 };
