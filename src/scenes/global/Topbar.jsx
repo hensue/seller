@@ -16,9 +16,25 @@ const Topbar = () => {
   const colorMode = useContext(ColorModeContext);
 
   return (
-    <Box>
-      {/* ICONS */}
-      <Box display="flex" justifyContent="flex-end" p={2} pb={0}>
+    <Box display="grid" mt="2vh" gridTemplateColumns="repeat(15, 1fr)" gap="20px">
+      {/* ROW 3 */}
+      <Box gridColumn="span 10" gridRow="span 2" p={2}>
+        <Box
+          display="flex"
+          backgroundColor={colors.primary[50]}
+          borderRadius="10px"
+        >
+          <InputBase
+            sx={{ ml: 3, flex: 1, width: 350, color: "black" }}
+            placeholder="Search Products"
+          />
+          <IconButton type="button" sx={{ p: 1, color: "black" }}>
+            <SearchIcon />
+          </IconButton>
+        </Box>
+      </Box>
+
+      <Box gridColumn="span 5" display="flex" justifyContent="flex-end" gridRow="span 2" p={2}>
         {/* <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (
             <DarkModeOutlinedIcon />
@@ -35,22 +51,6 @@ const Topbar = () => {
         <IconButton style={{ color: "black" }}>
           <PersonOutlinedIcon />
         </IconButton>
-      </Box>
-      <Box display="flex" justifyContent="flex-start" p={2} pb={0}>
-        {/* SEARCH BAR */}
-        <Box
-          display="flex"
-          backgroundColor={colors.primary[50]}
-          borderRadius="10px"
-        >
-          <InputBase
-            sx={{ ml: 3, flex: 1, width: 350, color: "black" }}
-            placeholder="Search Products"
-          />
-          <IconButton type="button" sx={{ p: 1, color: "black" }}>
-            <SearchIcon />
-          </IconButton>
-        </Box>
       </Box>
     </Box>
   );

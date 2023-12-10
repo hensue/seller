@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
+import AppRegistration from "@mui/icons-material/AppRegistration";
+import AnalyticsOutlined from "@mui/icons-material/AnalyticsOutlined";
+import CreateOutlined from "@mui/icons-material/CreateOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
@@ -45,7 +49,7 @@ const Sidebar = () => {
     <Box
       sx={{
         "& .pro-sidebar-inner": {
-          background: `${colors.primary[50]} !important`,
+          background: "linear-gradient(257deg,#e5ffea,rgba(224,255,229,0))",
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -79,14 +83,22 @@ const Sidebar = () => {
                 alignItems="center"
                 // ml="15px"
               >
-                 <img
+                <img
                   alt="profile-user"
                   width="50"
                   height="50px"
                   src={`https://images.unsplash.com/photo-1615572359976-1fe39507ed7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJsYWNrJTIwbWFufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`}
-                  style={{ cursor: "pointer", objectFit:"cover",  borderRadius: "50%" }}
+                  style={{
+                    cursor: "pointer",
+                    objectFit: "cover",
+                    borderRadius: "50%",
+                  }}
                 />
-                <Typography onClick={() => setIsCollapsed(!isCollapsed)} variant="h3" color={colors.grey[900]}>
+                <Typography
+                  onClick={() => setIsCollapsed(!isCollapsed)}
+                  variant="h3"
+                  color={colors.grey[900]}
+                >
                   Ewolove
                 </Typography>
                 {/* <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
@@ -137,12 +149,41 @@ const Sidebar = () => {
               color={colors.grey[800]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Data
+              Auth
             </Typography>
             <Item
-              title="Manage Team"
+              title="Login"
+              to="/login"
+              icon={<LoginOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Register"
+              to="/register"
+              icon={<AppRegistration />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <Typography
+              variant="h6"
+              color={colors.grey[800]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
+              Analysis
+            </Typography>
+            <Item
+              title="Product Analysis"
               to="/team"
-              icon={<PeopleOutlinedIcon />}
+              icon={<AnalyticsOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Listing Generator"
+              to="/generator"
+              icon={<CreateOutlined />}
               selected={selected}
               setSelected={setSelected}
             />

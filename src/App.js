@@ -15,6 +15,9 @@ import Pie from "./scenes/pie";
 import FAQ from "./scenes/faq";
 import Geography from "./scenes/geography";
 import Calendar from "./scenes/calendar";
+import Generator from "./scenes/generator";
+import Login from "./scenes/auth/login";
+import Register from "./scenes/auth/register";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -30,7 +33,10 @@ function App() {
             <Topbar setIsSidebar={setIsSidebar} />
             <Routes>
               <Route path="/" element={<Dashboard />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
               <Route path="/team" element={<Team />} />
+              <Route path="/generator" element={<Generator />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/invoices" element={<Invoices />} />
               <Route path="/form" element={<Form />} />
