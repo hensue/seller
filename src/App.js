@@ -30,7 +30,7 @@ function App() {
         <CssBaseline />
         <div className="app">
           {/* <Sidebar isSidebar={isSidebar} /> */}
-          <main>
+          {/* <main> */}
             {/* <Topbar setIsSidebar={setIsSidebar} /> */}
             <Routes>
               <Route path="/" element={<Dashboard />} />
@@ -49,7 +49,7 @@ function App() {
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/geography" element={<Geography />} />
             </Routes>
-          </main>
+          {/* </main> */}
         </div>
       </ThemeProvider>
     </ColorModeContext.Provider>

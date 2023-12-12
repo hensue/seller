@@ -12,14 +12,13 @@ body,
 
 
 .app {
-  /* display: flex; */
-  /* position: relative; */
-  height: auto;
+  height: 100vh;
+  overflow: auto;
+  /* overflow-y: scroll; */
   width: 100%;
   margin: 0 !important;
   padding: 0 !important;
   font-family: "Source Sans 3" , sans-serif ;
-  /* background: linear-gradient(257deg,#e5ffea,rgba(224,255,229,0)); */
   background: radial-gradient(
     64.18% 64.18% at 71.16% 35.69%,
     #def9fa 0.89%,
@@ -68,6 +67,21 @@ body,
 
 /* Custom styles for Accordion Details */
 .custom-accordion .MuiAccordionDetails-root {
+  background-color: #ffffff; /* Set your desired background color */
+}
+
+.custom-accordion1 {
+  margin-top: 2vh;
+  background-color: #ffffff; /* Set your desired background color */
+}
+
+/* Custom styles for Accordion Summary */
+.custom-accordion1 .MuiAccordionSummary-root {
+  background-color: #ffffff; /* Set your desired background color */
+}
+
+/* Custom styles for Accordion Details */
+.custom-accordion1 .MuiAccordionDetails-root {
   background-color: #ffffff; /* Set your desired background color */
 }
 

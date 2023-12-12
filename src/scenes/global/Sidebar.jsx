@@ -45,14 +45,17 @@ const Sidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState("Dashboard");
+  const [selected, setSelected] = useState("");
 
   return isNonMobile ? (
     <Box
-      height="100%"
+      height="100vh"
       sx={{
+        position: 'sticky',
+        top: 0,
         "& .pro-sidebar-inner": {
-          background: "linear-gradient(257deg,#e5ffea,rgba(224,255,229,0))",
+          // background: "linear-gradient(257deg,#e5ffea,rgba(224,255,229,0))",
+          backgroundColor:"white"
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -110,7 +113,7 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
 
-            <Typography
+            {/* <Typography
               variant="h6"
               color={colors.grey[800]}
               sx={{ m: "15px 0 5px 20px" }}
@@ -130,14 +133,14 @@ const Sidebar = () => {
               icon={<AppRegistration />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
 
             <Typography
-              variant="h6"
-              color={colors.grey[800]}
+              variant="h5"
+              color={colors.grey[900]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Analysis
+              Research Tools
             </Typography>
             <Item
               title="Product Analysis"
@@ -183,7 +186,8 @@ const Sidebar = () => {
       height="100%"
       sx={{
         "& .pro-sidebar-inner": {
-          background: "linear-gradient(257deg,#e5ffea,rgba(224,255,229,0))",
+          // background: "linear-gradient(257deg,#e5ffea,rgba(224,255,229,0))",
+          backgroundColor: "white !important",
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",

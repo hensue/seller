@@ -131,6 +131,8 @@ const initialValues = {
   return (
     <Box
       sx={{
+         position: 'sticky',
+        top: 0,
         "& .pro-sidebar-inner": {
           background: `${colors.primary[50]} !important`,
         },
