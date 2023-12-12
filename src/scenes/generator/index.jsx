@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
+import Sidebar from "../global/Sidebar";
 
 const Generator = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
@@ -12,104 +13,108 @@ const Generator = () => {
   };
 
   const inputStyles = {
-    backgroundColor:'white',
-    color:'black',
-    borderRadius: '10px'
-   }
+    backgroundColor: "white",
+    color: "black",
+    borderRadius: "10px",
+  };
 
-   const inputStyles1 = {
-    backgroundColor:'white',
-    height:'30vh',
-    color:'black',
-    borderRadius: '10px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-   }
+  const inputStyles1 = {
+    backgroundColor: "white",
+    height: "30vh",
+    color: "black",
+    borderRadius: "10px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+  };
 
-   const inputLabelStyles = {
-     backgroundColor: "white",
-     color: "black",
-   };
+  const inputLabelStyles = {
+    backgroundColor: "white",
+    color: "black",
+  };
 
   return (
-    <Box pt="5rem" pl="10rem" pr="10rem" height="100vh">
-      <Header
-        title="Listing Generator"
-        subtitle="Etsy Description Generatpr, AI Written, SEO Optimized Description with One Click."
-      />
+    <Box display="grid" gridTemplateColumns="repeat(15, 1fr)">
+      <Box gridColumn="span 2">
+        <Sidebar />
+      </Box>
+      <Box gridColumn="span 13" pt="10vh" pl="10%" pr="10%" height="100vh">
+        <Header
+          title="Listing Generator"
+          subtitle="Etsy Description Generatpr, AI Written, SEO Optimized Description with One Click."
+        />
 
-      <Formik
-        onSubmit={handleFormSubmit}
-        initialValues={initialValues}
-        validationSchema={checkoutSchema}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleBlur,
-          handleChange,
-          handleSubmit,
-        }) => (
-          <form onSubmit={handleSubmit}>
-            <Box
-              display="grid"
-              gridTemplateColumns="repeat(4, minmax(0, 1fr))"
-              sx={{
-                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
-              }}
-            >
-             
-              <Typography variant="h5" color="black" mt="2vh" mb="2vh">
-                Product Title
-              </Typography>
-              <TextField
-                fullWidth
-                variant="outlined"
-                type="text"
-                label="title"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.email}
-                name="email"
-                InputProps={{style:inputStyles}}
-                InputLabelProps={{ style: inputLabelStyles }}
-                // error={!!touched.email && !!errors.email}
-                // helperText={touched.email && errors.email}
-                sx={{ 
-                  gridColumn: "span 4",                  
+        <Formik
+          onSubmit={handleFormSubmit}
+          initialValues={initialValues}
+          validationSchema={checkoutSchema}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleBlur,
+            handleChange,
+            handleSubmit,
+          }) => (
+            <form onSubmit={handleSubmit}>
+              <Box
+                display="grid"
+                gridTemplateColumns="repeat(4, minmax(0, 1fr))"
+                sx={{
+                  "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
                 }}
-              />
-              <Typography variant="h5" color="black" mt="4vh" mb="2vh">
-                Product Tags
-              </Typography>
-              <TextField
-                fullWidth
-                variant="outlined"
-                type="text"
-                label="Tags"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.contact}
-                name="contact"
-                multiline
-                rows={10}
-                InputProps={{style:inputStyles1}}
-                InputLabelProps={{ style: inputLabelStyles }}
-                // error={!!touched.contact && !!errors.contact}
-                // helperText={touched.contact && errors.contact}
-                sx={{ gridColumn: "span 4" }}
-              />
-            </Box>
-            <Box display="flex" justifyContent="center" mt="20px">
-              <Button type="submit" color="secondary" variant="contained">
-                Generate
-              </Button>
-            </Box>
-          </form>
-        )}
-      </Formik>
+              >
+                <Typography gridColumn="span 2" variant="h5" color="black" mt="2vh" mb="2vh">
+                  Product Title
+                </Typography>
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  type="text"
+                  label="title"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.email}
+                  name="email"
+                  InputProps={{ style: inputStyles }}
+                  InputLabelProps={{ style: inputLabelStyles }}
+                  // error={!!touched.email && !!errors.email}
+                  // helperText={touched.email && errors.email}
+                  sx={{
+                    gridColumn: "span 4",
+                  }}
+                />
+                <Typography gridColumn="span 2" variant="h5" color="black" mt="4vh" mb="2vh">
+                  Product Tags
+                </Typography>
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  type="text"
+                  label="Tags"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.contact}
+                  name="contact"
+                  multiline
+                  rows={10}
+                  InputProps={{ style: inputStyles1 }}
+                  InputLabelProps={{ style: inputLabelStyles }}
+                  // error={!!touched.contact && !!errors.contact}
+                  // helperText={touched.contact && errors.contact}
+                  sx={{ gridColumn: "span 4" }}
+                />
+              </Box>
+              <Box display="flex" justifyContent="center" mt="20px">
+                <Button type="submit" color="secondary" variant="contained">
+                  Generate
+                </Button>
+              </Box>
+            </form>
+          )}
+        </Formik>
+      </Box>
     </Box>
   );
 };

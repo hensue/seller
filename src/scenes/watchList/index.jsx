@@ -5,6 +5,7 @@ import { tokens } from "../../theme";
 import { Box, useTheme } from "@mui/material";
 import { WatchList } from "../../data/mockData";
 import Topbar from "../../scenes/global/Topbar";
+import Sidebar from "../global/Sidebar";
 
 function GridSparklineCell(props) {
   if (props.value == null) {
@@ -181,45 +182,50 @@ export default function Lists() {
   const colors = tokens(theme.palette.mode);
 
   return (
-    <Box p="20px" height="100vh">
-      <Topbar></Topbar>
-      <Box
-        m="40px 0 0 0"
-        width="100%"
-        height="75vh"
-        display="flex"
-        flexDirection="column"
-        overflowX="scroll"
-        sx={{
-          "& .MuiDataGrid-root": {
-            border: "none !important",
-          },
-          "& .MuiDataGrid-cell": {
-            border: "none !important",
-          },
-          "& .name-column--cell": {
-            color: colors.primary[500],
-            border: "none !important",
-          },
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.greenAccent[700],
-            border: "none !important",
-          },
-          "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[50],
-            border: "none !important",
-          },
-          "& .MuiDataGrid-footerContainer": {
-            border: "none !important",
-            backgroundColor: colors.greenAccent[700],
-          },
-          "& .MuiCheckbox-root": {
-            border: "none !important",
-            color: `${colors.greenAccent[200]} !important`,
-          },
-        }}
-      >
-        <DataGrid rows={WatchList} columns={columns} />
+    <Box display="grid" gridTemplateColumns="repeat(15, 1fr)">
+      <Box gridColumn="span 2">
+        <Sidebar />
+      </Box>
+      <Box gridColumn="span 13" p="20px" height="100vh">
+        <Topbar></Topbar>
+        <Box
+          m="40px 0 0 0"
+          width="100%"
+          height="75vh"
+          display="flex"
+          flexDirection="column"
+          overflowX="scroll"
+          sx={{
+            "& .MuiDataGrid-root": {
+              border: "none !important",
+            },
+            "& .MuiDataGrid-cell": {
+              border: "none !important",
+            },
+            "& .name-column--cell": {
+              color: colors.primary[500],
+              border: "none !important",
+            },
+            "& .MuiDataGrid-columnHeaders": {
+              backgroundColor: colors.greenAccent[700],
+              border: "none !important",
+            },
+            "& .MuiDataGrid-virtualScroller": {
+              backgroundColor: colors.primary[50],
+              border: "none !important",
+            },
+            "& .MuiDataGrid-footerContainer": {
+              border: "none !important",
+              backgroundColor: colors.greenAccent[700],
+            },
+            "& .MuiCheckbox-root": {
+              border: "none !important",
+              color: `${colors.greenAccent[200]} !important`,
+            },
+          }}
+        >
+          <DataGrid rows={WatchList} columns={columns} />
+        </Box>
       </Box>
     </Box>
   );

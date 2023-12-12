@@ -5,6 +5,7 @@ import { Box, useTheme, Button } from "@mui/material";
 import { mockSpotLight, mockSpotLightSort } from "../../data/mockData";
 import { SparkLineChart } from "@mui/x-charts/SparkLineChart";
 import Topbar from "../../scenes/global/Topbar";
+import Sidebar from "../global/Sidebar";
 
 function GridSparklineCell(props) {
   if (props.value == null) {
@@ -91,97 +92,102 @@ export default function SpotLight() {
   const handleClose = () => setIsOpen(false);
 
   return (
-    <Box p="20px"  height="100vh" >
-      <Topbar></Topbar>
-      <Box display="flex" flex="1">
-      <Box
-        flex="0.2"
-        m="40px 0 0 0"
-        width="100%"
-        height="75vh"
-        display="flex"
-        flexDirection="column"
-        overflowX="scroll"
-        sx={{
-          "& .MuiDataGrid-root": {
-            border: "none !important",
-          },
-          "& .MuiDataGrid-cell": {
-            border: "none !important",
-          },
-          "& .name-column--cell": {
-            color: colors.primary[500],
-            border: "none !important",
-          },
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.greenAccent[700],
-            border: "none !important",
-          },
-          "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[50],
-            border: "none !important",
-          },
-          "& .MuiDataGrid-footerContainer": {
-            border: "none !important",
-            backgroundColor: colors.greenAccent[700],
-          },
-          "& .MuiCheckbox-root": {
-            border: "none !important",
-            color: `${colors.greenAccent[200]} !important`,
-          },
-        }}
-      >
-        <DataGrid
-          rows={mockSpotLightSort}
-          columns={columns1}
-          onRowClick={handleOpen}
-          hideFooter={true}
-        />
+    <Box display="grid" gridTemplateColumns="repeat(15, 1fr)">
+      <Box gridColumn="span 2">
+        <Sidebar />
       </Box>
-      <Box flex="0.02"></Box>
-      <Box
-        flex="0.78"
-        m="40px 0 0 0"
-        width="100%"
-        height="75vh"
-        display="flex"
-        flexDirection="column"
-        overflowX="scroll"
-        sx={{
-          "& .MuiDataGrid-root": {
-            border: "none !important",
-          },
-          "& .MuiDataGrid-cell": {
-            border: "none !important",
-          },
-          "& .name-column--cell": {
-            color: colors.primary[500],
-            border: "none !important",
-          },
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.greenAccent[700],
-            border: "none !important",
-          },
-          "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[50],
-            border: "none !important",
-          },
-          "& .MuiDataGrid-footerContainer": {
-            border: "none !important",
-            backgroundColor: colors.greenAccent[700],
-          },
-          "& .MuiCheckbox-root": {
-            border: "none !important",
-            color: `${colors.greenAccent[200]} !important`,
-          },
-        }}
-      >
-        <DataGrid
-          rows={mockSpotLight}
-          columns={columns}
-          onRowClick={handleOpen}
-        />
-      </Box>
+      <Box gridColumn="span 13" p="20px" height="100vh">
+        <Topbar></Topbar>
+        <Box display="flex" flex="1">
+          <Box
+            flex="0.2"
+            m="40px 0 0 0"
+            width="100%"
+            height="75vh"
+            display="flex"
+            flexDirection="column"
+            overflowX="scroll"
+            sx={{
+              "& .MuiDataGrid-root": {
+                border: "none !important",
+              },
+              "& .MuiDataGrid-cell": {
+                border: "none !important",
+              },
+              "& .name-column--cell": {
+                color: colors.primary[500],
+                border: "none !important",
+              },
+              "& .MuiDataGrid-columnHeaders": {
+                backgroundColor: colors.greenAccent[700],
+                border: "none !important",
+              },
+              "& .MuiDataGrid-virtualScroller": {
+                backgroundColor: colors.primary[50],
+                border: "none !important",
+              },
+              "& .MuiDataGrid-footerContainer": {
+                border: "none !important",
+                backgroundColor: colors.greenAccent[700],
+              },
+              "& .MuiCheckbox-root": {
+                border: "none !important",
+                color: `${colors.greenAccent[200]} !important`,
+              },
+            }}
+          >
+            <DataGrid
+              rows={mockSpotLightSort}
+              columns={columns1}
+              onRowClick={handleOpen}
+              hideFooter={true}
+            />
+          </Box>
+          <Box flex="0.02"></Box>
+          <Box
+            flex="0.78"
+            m="40px 0 0 0"
+            width="100%"
+            height="75vh"
+            display="flex"
+            flexDirection="column"
+            overflowX="scroll"
+            sx={{
+              "& .MuiDataGrid-root": {
+                border: "none !important",
+              },
+              "& .MuiDataGrid-cell": {
+                border: "none !important",
+              },
+              "& .name-column--cell": {
+                color: colors.primary[500],
+                border: "none !important",
+              },
+              "& .MuiDataGrid-columnHeaders": {
+                backgroundColor: colors.greenAccent[700],
+                border: "none !important",
+              },
+              "& .MuiDataGrid-virtualScroller": {
+                backgroundColor: colors.primary[50],
+                border: "none !important",
+              },
+              "& .MuiDataGrid-footerContainer": {
+                border: "none !important",
+                backgroundColor: colors.greenAccent[700],
+              },
+              "& .MuiCheckbox-root": {
+                border: "none !important",
+                color: `${colors.greenAccent[200]} !important`,
+              },
+            }}
+          >
+            <DataGrid
+              rows={mockSpotLight}
+              columns={columns}
+              onRowClick={handleOpen}
+            />
+          </Box>
+        </Box>
       </Box>
     </Box>
   );

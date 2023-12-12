@@ -3,9 +3,9 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../../components/Header";
+import Sidebar from "../../global/Sidebar";
 
 const Login = () => {
-
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const handleFormSubmit = (values) => {
@@ -13,86 +13,91 @@ const Login = () => {
   };
 
   const inputStyles = {
-   backgroundColor:'white',
-   color:'black',
-   borderRadius: '10px'
-  }
+    backgroundColor: "white",
+    color: "black",
+    borderRadius: "10px",
+  };
   const inputLabelStyles = {
     backgroundColor: "white",
     color: "black",
   };
 
   return (
-    <Box pt="30vh" ml="20rem" mr="20rem" height="100vh">
-      <Header title="LogIn" subtitle="Please Login to Ewolve" />
+    <Box display="grid" gridTemplateColumns="repeat(15, 1fr)">
+      <Box gridColumn="span 2">
+        <Sidebar />
+      </Box>
+      <Box gridColumn="span 13" pt="30vh" pl="20%" pr="20%" height="100vh">
+        <Header title="LogIn" subtitle="Please Login to Ewolve" />
 
-      <Formik
-        onSubmit={handleFormSubmit}
-        initialValues={initialValues}
-        validationSchema={checkoutSchema}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleBlur,
-          handleChange,
-          handleSubmit,
-        }) => (
-          <form onSubmit={handleSubmit}>
-            <Box
-              display="grid"
-              gap="30px"
-              gridTemplateColumns="repeat(4, minmax(0, 1fr))"
-              sx={{
-                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
-              }}
-            >
-              {/* <Typography variant="h5" color="black" mb="2vh">
+        <Formik
+          onSubmit={handleFormSubmit}
+          initialValues={initialValues}
+          validationSchema={checkoutSchema}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleBlur,
+            handleChange,
+            handleSubmit,
+          }) => (
+            <form onSubmit={handleSubmit}>
+              <Box
+                display="grid"
+                gap="30px"
+                gridTemplateColumns="repeat(4, minmax(0, 1fr))"
+                sx={{
+                  "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
+                }}
+              >
+                {/* <Typography variant="h5" color="black" mb="2vh">
                 Email
               </Typography> */}
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Email"
-                InputProps={{style:inputStyles}}
-                InputLabelProps={{ style: inputLabelStyles }}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.email}
-                name="email"
-                error={!!touched.email && !!errors.email}
-                helperText={touched.email && errors.email}
-                sx={{ gridColumn: "span 4" }}
-              />
-              {/* <Typography variant="h5" color="black" mt="5vh" mb="2vh">
+                <TextField
+                  fullWidth
+                  variant="filled"
+                  type="text"
+                  label="Email"
+                  InputProps={{ style: inputStyles }}
+                  InputLabelProps={{ style: inputLabelStyles }}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.email}
+                  name="email"
+                  error={!!touched.email && !!errors.email}
+                  helperText={touched.email && errors.email}
+                  sx={{ gridColumn: "span 4" }}
+                />
+                {/* <Typography variant="h5" color="black" mt="5vh" mb="2vh">
                 Password
               </Typography> */}
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Password"
-                InputProps={{style:inputStyles}}
-                InputLabelProps={{ style: inputLabelStyles }}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.password}
-                name="password"
-                error={!!touched.password && !!errors.password}
-                helperText={touched.password && errors.password}
-                sx={{ gridColumn: "span 4" }}
-              />
-            </Box>
-            <Box display="flex" justifyContent="center" mt="3vh">
-              <Button type="submit" color="secondary" variant="contained">
-                Login
-              </Button>
-            </Box>
-          </form>
-        )}
-      </Formik>
+                <TextField
+                  fullWidth
+                  variant="filled"
+                  type="text"
+                  label="Password"
+                  InputProps={{ style: inputStyles }}
+                  InputLabelProps={{ style: inputLabelStyles }}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.password}
+                  name="password"
+                  error={!!touched.password && !!errors.password}
+                  helperText={touched.password && errors.password}
+                  sx={{ gridColumn: "span 4" }}
+                />
+              </Box>
+              <Box display="flex" justifyContent="center" mt="3vh">
+                <Button type="submit" color="secondary" variant="contained">
+                  Login
+                </Button>
+              </Box>
+            </form>
+          )}
+        </Formik>
+      </Box>
     </Box>
   );
 };

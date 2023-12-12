@@ -29,8 +29,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-          <Sidebar isSidebar={isSidebar} />
-          <main className="content">
+          {/* <Sidebar isSidebar={isSidebar} /> */}
+          <main>
             {/* <Topbar setIsSidebar={setIsSidebar} /> */}
             <Routes>
               <Route path="/" element={<Dashboard />} />

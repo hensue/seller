@@ -5,6 +5,7 @@ import { tokens } from "../../theme";
 import { Box, useTheme, Button } from "@mui/material";
 import { mockListing } from "../../data/mockData";
 import Topbar from "../../scenes/global/Topbar";
+import Sidebar from "../global/Sidebar";
 
 import { Modal, ModalBody } from "react-modern-modal";
 
@@ -253,257 +254,282 @@ export default function Contacts() {
   const handleClose = () => setIsOpen(false);
 
   return (
-    <Box p="20px" height="100vh">
-      <Topbar></Topbar>
-      <Box
-        m="40px 0 0 0"
-        width="100%"
-        height="75vh"
-        display="flex"
-        flexDirection="column"
-        overflowX="scroll"
-        sx={{
-          "& .MuiDataGrid-root": {
-            border: "none !important",
-          },
-          "& .MuiDataGrid-cell": {
-            border: "none !important",
-          },
-          "& .name-column--cell": {
-            color: colors.primary[500],
-            border: "none !important",
-          },
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.greenAccent[700],
-            border: "none !important",
-          },
-          "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[50],
-            border: "none !important",
-          },
-          "& .MuiDataGrid-footerContainer": {
-            border: "none !important",
-            backgroundColor: colors.greenAccent[700],
-          },
-          "& .MuiCheckbox-root": {
-            border: "none !important",
-            color: `${colors.greenAccent[200]} !important`,
-          },
-        }}
-      >
-        <DataGrid
-          rows={mockListing}
-          columns={columns}
-          onRowClick={handleOpen}
-        />
+    <Box display="grid" gridTemplateColumns="repeat(15, 1fr)">
+      <Box gridColumn="span 2">
+        <Sidebar />
       </Box>
-      <Modal size="lg" isOpen={isOpen} onClose={handleClose}>
-        {/* <ModalHeader>Sign Up</ModalHeader> */}
-        <ModalBody style={{ backgroundColor: "#ddd9d9" }}>
-          <div style={{ display: "flex" }}>
-            <div
-              style={{
-                width: 250,
-                height: 300,
-                backgroundColor: "#76d4ac",
-                borderRadius: 5,
-              }}
-            >
+      <Box gridColumn="span 13" p="20px" height="100vh">
+        <Topbar></Topbar>
+        <Box
+          m="40px 0 0 0"
+          width="100%"
+          height="75vh"
+          display="flex"
+          flexDirection="column"
+          overflowX="scroll"
+          sx={{
+            "& .MuiDataGrid-root": {
+              border: "none !important",
+            },
+            "& .MuiDataGrid-cell": {
+              border: "none !important",
+            },
+            "& .name-column--cell": {
+              color: colors.primary[500],
+              border: "none !important",
+            },
+            "& .MuiDataGrid-columnHeaders": {
+              backgroundColor: colors.greenAccent[700],
+              border: "none !important",
+            },
+            "& .MuiDataGrid-virtualScroller": {
+              backgroundColor: colors.primary[50],
+              border: "none !important",
+            },
+            "& .MuiDataGrid-footerContainer": {
+              border: "none !important",
+              backgroundColor: colors.greenAccent[700],
+            },
+            "& .MuiCheckbox-root": {
+              border: "none !important",
+              color: `${colors.greenAccent[200]} !important`,
+            },
+          }}
+        >
+          <DataGrid
+            rows={mockListing}
+            columns={columns}
+            onRowClick={handleOpen}
+          />
+        </Box>
+        <Modal size="lg" isOpen={isOpen} onClose={handleClose}>
+          {/* <ModalHeader>Sign Up</ModalHeader> */}
+          <ModalBody style={{ backgroundColor: "#ddd9d9" }}>
+            <div style={{ display: "flex" }}>
               <div
                 style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: 20
+                  width: 250,
+                  height: 300,
+                  backgroundColor: "#76d4ac",
+                  borderRadius: 5,
                 }}
               >
-                <img
-                  alt="product"
-                  src="https://registry.globalcarbonstandard.org/rect.png"
-                  width="300px"
-                  height="200px"
-                  style={{ borderRadius: 50 }}
-                />
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: 20,
+                  }}
+                >
+                  <img
+                    alt="product"
+                    src="https://registry.globalcarbonstandard.org/rect.png"
+                    width="300px"
+                    height="200px"
+                    style={{ borderRadius: 50 }}
+                  />
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginTop: "10px",
+                  }}
+                >
+                  <Button
+                    style={{
+                      marginRight: "10px",
+                      borderRadius: "10px",
+                      backgroundColor: "white",
+                    }}
+                    type="submit"
+                    color="secondary"
+                    variant="contained"
+                  >
+                    Etsy
+                  </Button>
+                  <Button
+                    style={{ backgroundColor: "white", borderRadius: "10px" }}
+                    type="submit"
+                    color="secondary"
+                    variant="contained"
+                  >
+                    Create
+                  </Button>
+                </div>
               </div>
-              <div style={{display:'flex', justifyContent:'center',marginTop:'10px'}}>
-                <Button style={{marginRight:'10px', borderRadius:'10px',backgroundColor:'white'}} type="submit" color="secondary" variant="contained">
-                  Etsy
-                </Button>
-                <Button style={{ backgroundColor:'white',borderRadius:'10px',}} type="submit" color="secondary" variant="contained">
-                  Create
-                </Button>
+              <div
+                style={{
+                  width: 250,
+                  height: 300,
+                  marginLeft: 10,
+                  marginRight: 10,
+                  padding: 10,
+                  backgroundColor: "white",
+                  borderRadius: 5,
+                }}
+              >
+                <h2 style={{ color: "#5368e0" }}>Listing Metrics</h2>
+                <p
+                  style={{
+                    paddingTop: 10,
+                    color: "black",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "1px #f0e8e8 solid",
+                  }}
+                >
+                  <span>Estimated Sales</span>
+                  <span>637</span>
+                </p>
+                <p
+                  style={{
+                    color: "black",
+                    paddingTop: 10,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "1px #f0e8e8 solid",
+                  }}
+                >
+                  <span>Estimated Revenue</span>
+                  <span>$6,994</span>
+                </p>
+                <p
+                  style={{
+                    color: "black",
+                    paddingTop: 10,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "1px #f0e8e8 solid",
+                  }}
+                >
+                  <span>Estimated Conversion Rate</span>
+                  <span>2.51%</span>
+                </p>
+                <p
+                  style={{
+                    color: "black",
+                    paddingTop: 10,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "1px #f0e8e8 solid",
+                  }}
+                >
+                  <span>Daily Views</span>
+                  <span>241</span>
+                </p>
+                <p
+                  style={{
+                    color: "black",
+                    paddingTop: 10,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "1px #f0e8e8 solid",
+                  }}
+                >
+                  <span>Views</span>
+                  <span>25,412</span>
+                </p>
+                <p
+                  style={{
+                    color: "black",
+                    paddingTop: 10,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "1px #f0e8e8 solid",
+                  }}
+                >
+                  <span>Favorites</span>
+                  <span>225</span>
+                </p>
+                <p
+                  style={{
+                    color: "black",
+                    paddingTop: 10,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "1px #f0e8e8 solid",
+                  }}
+                >
+                  <span>Quantity Available</span>
+                  <span>13,321</span>
+                </p>
+                <p
+                  style={{
+                    color: "black",
+                    paddingTop: 10,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "1px #f0e8e8 solid",
+                  }}
+                >
+                  <span>Visibility</span>
+                  <span>100%</span>
+                </p>
+              </div>
+              <div
+                style={{
+                  width: 250,
+                  height: 300,
+                  padding: 10,
+                  backgroundColor: "white",
+                  borderRadius: 5,
+                }}
+              >
+                <h2 style={{ color: "#5368e0  " }}>History</h2>
+                <p
+                  style={{
+                    paddingTop: 10,
+                    color: "black",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "1px #f0e8e8 solid",
+                  }}
+                >
+                  <span>Listing Age</span>
+                  <span>106 days</span>
+                </p>
+                <p
+                  style={{
+                    color: "black",
+                    paddingTop: 10,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "1px #f0e8e8 solid",
+                  }}
+                >
+                  <span>Created</span>
+                  <span>23 Aug, 2023</span>
+                </p>
+                <p
+                  style={{
+                    color: "black",
+                    paddingTop: 10,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "1px #f0e8e8 solid",
+                  }}
+                >
+                  <span>Last Updated</span>
+                  <span>07 Dec, 2024</span>
+                </p>
+                <p
+                  style={{
+                    color: "black",
+                    paddingTop: 10,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "1px #f0e8e8 solid",
+                  }}
+                >
+                  <span>Expiry</span>
+                  <span>07 Apir, 2024</span>
+                </p>
               </div>
             </div>
-            <div
-              style={{
-                width: 250,
-                height: 300,
-                marginLeft: 10,
-                marginRight: 10,
-                padding: 10,
-                backgroundColor: "white",
-                borderRadius: 5,
-              }}
-            >
-              <h2 style={{ color: "#5368e0" }}>Listing Metrics</h2>
-              <p
-                style={{
-                  paddingTop: 10,
-                  color: "black",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  borderBottom: "1px #f0e8e8 solid",
-                }}
-              >
-                <span>Estimated Sales</span>
-                <span>637</span>
-              </p>
-              <p
-                style={{
-                  color: "black",
-                  paddingTop: 10,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  borderBottom: "1px #f0e8e8 solid",
-                }}
-              >
-                <span>Estimated Revenue</span>
-                <span>$6,994</span>
-              </p>
-              <p
-                style={{
-                  color: "black",
-                  paddingTop: 10,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  borderBottom: "1px #f0e8e8 solid",
-                }}
-              >
-                <span>Estimated Conversion Rate</span>
-                <span>2.51%</span>
-              </p>
-              <p
-                style={{
-                  color: "black",
-                  paddingTop: 10,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  borderBottom: "1px #f0e8e8 solid",
-                }}
-              >
-                <span>Daily Views</span>
-                <span>241</span>
-              </p>
-              <p
-                style={{
-                  color: "black",
-                  paddingTop: 10,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  borderBottom: "1px #f0e8e8 solid",
-                }}
-              >
-                <span>Views</span>
-                <span>25,412</span>
-              </p>
-              <p
-                style={{
-                  color: "black",
-                  paddingTop: 10,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  borderBottom: "1px #f0e8e8 solid",
-                }}
-              >
-                <span>Favorites</span>
-                <span>225</span>
-              </p>
-              <p
-                style={{
-                  color: "black",
-                  paddingTop: 10,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  borderBottom: "1px #f0e8e8 solid",
-                }}
-              >
-                <span>Quantity Available</span>
-                <span>13,321</span>
-              </p>
-              <p
-                style={{
-                  color: "black",
-                  paddingTop: 10,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  borderBottom: "1px #f0e8e8 solid",
-                }}
-              >
-                <span>Visibility</span>
-                <span>100%</span>
-              </p>
-            </div>
-            <div
-              style={{
-                width: 250,
-                height: 300,
-                padding: 10,
-                backgroundColor: "white",
-                borderRadius: 5,
-              }}
-            >
-              <h2 style={{ color: "#5368e0  " }}>History</h2>
-              <p
-                style={{
-                  paddingTop: 10,
-                  color: "black",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  borderBottom: "1px #f0e8e8 solid",
-                }}
-              >
-                <span>Listing Age</span>
-                <span>106 days</span>
-              </p>
-              <p
-                style={{
-                  color: "black",
-                  paddingTop: 10,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  borderBottom: "1px #f0e8e8 solid",
-                }}
-              >
-                <span>Created</span>
-                <span>23 Aug, 2023</span>
-              </p>
-              <p
-                style={{
-                  color: "black",
-                  paddingTop: 10,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  borderBottom: "1px #f0e8e8 solid",
-                }}
-              >
-                <span>Last Updated</span>
-                <span>07 Dec, 2024</span>
-              </p>
-              <p
-                style={{
-                  color: "black",
-                  paddingTop: 10,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  borderBottom: "1px #f0e8e8 solid",
-                }}
-              >
-                <span>Expiry</span>
-                <span>07 Apir, 2024</span>
-              </p>
-            </div>
-          </div>
-        </ModalBody>
-      </Modal>
+          </ModalBody>
+        </Modal>
+      </Box>
     </Box>
   );
 }

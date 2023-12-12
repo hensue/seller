@@ -7,6 +7,7 @@ import { Box, useTheme, Button } from "@mui/material";
 import LockIcon from "@mui/icons-material/Lock";
 import Sidebar from "../global/Sidebar1";
 import Topbar from "../../scenes/global/Topbar";
+import Sidebar1 from "../global/Sidebar";
 
 export default function ColumnSelectorGrid() {
   const [selectedRow, setSelectedRow] = useState(null);
@@ -177,52 +178,56 @@ export default function ColumnSelectorGrid() {
   };
 
   return (
-    <Box p="20px" height="100vh">
-      <Topbar></Topbar>
-      <Box
-        m="40px 0 0 0"
-        height="75vh"
-        sx={{
-          "& .MuiDataGrid-root": {
-            border: "none !important",
-          },
-          "& .MuiDataGrid-cell": {
-            border: "none !important",
-          },
-          "& .name-column--cell": {
-            color: colors.primary[500],
-            fontSize: "16px",
-            border: "none !important",
-          },
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.greenAccent[700],
-            border: "none !important",
-          },
-          "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[50],
-            border: "none !important",
-          },
-          "& .MuiDataGrid-footerContainer": {
-            border: "none !important",
-            backgroundColor: colors.greenAccent[700],
-          },
-          "& .MuiCheckbox-root": {
-            border: "none !important",
-            color: `${colors.greenAccent[200]} !important`,
-          },
-        }}
-      >
-        <DataGrid
-          rows={mockDataTeam}
-          columns={columns}
-          slots={{
-            toolbar: GridToolbar,
-          }}
-          onRowClick={handleRowClick}
-        />
+    <Box display="grid" gridTemplateColumns="repeat(15, 1fr)">
+       <Box gridColumn="span 2">
+        <Sidebar1 />
       </Box>
-      {isModalOpen && <Sidebar rowData={selectedRow} onClose={closeModal} />}
-      
+      <Box gridColumn="span 13" p="20px" height="100vh">
+        <Topbar></Topbar>
+        <Box
+          m="40px 0 0 0"
+          height="75vh"
+          sx={{
+            "& .MuiDataGrid-root": {
+              border: "none !important",
+            },
+            "& .MuiDataGrid-cell": {
+              border: "none !important",
+            },
+            "& .name-column--cell": {
+              color: colors.primary[500],
+              fontSize: "16px",
+              border: "none !important",
+            },
+            "& .MuiDataGrid-columnHeaders": {
+              backgroundColor: colors.greenAccent[700],
+              border: "none !important",
+            },
+            "& .MuiDataGrid-virtualScroller": {
+              backgroundColor: colors.primary[50],
+              border: "none !important",
+            },
+            "& .MuiDataGrid-footerContainer": {
+              border: "none !important",
+              backgroundColor: colors.greenAccent[700],
+            },
+            "& .MuiCheckbox-root": {
+              border: "none !important",
+              color: `${colors.greenAccent[200]} !important`,
+            },
+          }}
+        >
+          <DataGrid
+            rows={mockDataTeam}
+            columns={columns}
+            slots={{
+              toolbar: GridToolbar,
+            }}
+            onRowClick={handleRowClick}
+          />
+        </Box>
+        {isModalOpen && <Sidebar rowData={selectedRow} onClose={closeModal} />}
+      </Box>
     </Box>
   );
 }
