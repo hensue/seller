@@ -113,28 +113,6 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
 
-            {/* <Typography
-              variant="h6"
-              color={colors.grey[800]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Auth
-            </Typography>
-            <Item
-              title="Login"
-              to="/login"
-              icon={<LoginOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Register"
-              to="/register"
-              icon={<AppRegistration />}
-              selected={selected}
-              setSelected={setSelected}
-            /> */}
-
             <Typography
               variant="h5"
               color={colors.grey[900]}
@@ -174,6 +152,27 @@ const Sidebar = () => {
               title="Listing Generator"
               to="/generator"
               icon={<CreateOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Typography
+              variant="h6"
+              color={colors.grey[800]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
+              Auth
+            </Typography>
+            <Item
+              title="Login"
+              to="/login"
+              icon={<LoginOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Register"
+              to="/register"
+              icon={<AppRegistration />}
               selected={selected}
               setSelected={setSelected}
             />

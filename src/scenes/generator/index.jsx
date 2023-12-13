@@ -38,8 +38,8 @@ const Generator = () => {
       <Box gridColumn="span 2">
         <Sidebar />
       </Box>
-      <Box gridColumn="span 13"height="100vh">
-      <Box
+      <Box gridColumn="span 13" height="100vh">
+        <Box
           height="35vh"
           sx={{
             backgroundImage:
@@ -49,82 +49,96 @@ const Generator = () => {
             backgroundPosition: "center",
           }}
         ></Box>
-        <Box mt="-30vh"  pt="10vh" pl="10%" pr="10%" >
-        <Header
-          title="Listing Generator"
-          subtitle="Etsy Description Generatpr, AI Written, SEO Optimized Description with One Click."
-        />
+        <Box mt="-30vh" pt="10vh" pl="10%" pr="10%">
+          <Header
+            title="Listing Generator"
+            subtitle="Etsy Description Generatpr, AI Written, SEO Optimized Description with One Click."
+          />
 
-        <Formik
-          onSubmit={handleFormSubmit}
-          initialValues={initialValues}
-          validationSchema={checkoutSchema}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            handleBlur,
-            handleChange,
-            handleSubmit,
-          }) => (
-            <form onSubmit={handleSubmit}>
-              <Box
-                display="grid"
-                gridTemplateColumns="repeat(4, minmax(0, 1fr))"
-                sx={{
-                  "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
-                }}
-              >
-                <Typography gridColumn="span 2" variant="h5" color="black" mt="2vh" mb="2vh">
-                  Product Title
-                </Typography>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  type="text"
-                  label="title"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.email}
-                  name="email"
-                  InputProps={{ style: inputStyles }}
-                  InputLabelProps={{ style: inputLabelStyles }}
-                  // error={!!touched.email && !!errors.email}
-                  // helperText={touched.email && errors.email}
+          <Formik
+            onSubmit={handleFormSubmit}
+            initialValues={initialValues}
+            validationSchema={checkoutSchema}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleBlur,
+              handleChange,
+              handleSubmit,
+            }) => (
+              <form onSubmit={handleSubmit}>
+                <Box
+                  display="grid"
+                  gridTemplateColumns="repeat(4, minmax(0, 1fr))"
                   sx={{
-                    gridColumn: "span 4",
+                    "& > div": {
+                      gridColumn: isNonMobile ? undefined : "span 4",
+                    },
                   }}
-                />
-                <Typography gridColumn="span 2" variant="h5" color="black" mt="4vh" mb="2vh">
-                  Product Tags
-                </Typography>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  type="text"
-                  label="Tags"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.contact}
-                  name="contact"
-                  multiline
-                  rows={10}
-                  InputProps={{ style: inputStyles1 }}
-                  InputLabelProps={{ style: inputLabelStyles }}
-                  // error={!!touched.contact && !!errors.contact}
-                  // helperText={touched.contact && errors.contact}
-                  sx={{ gridColumn: "span 4" }}
-                />
-              </Box>
-              <Box display="flex" justifyContent="center" mt="20px">
-                <Button type="submit" color="secondary" variant="contained">
-                  Generate
-                </Button>
-              </Box>
-            </form>
-          )}
-        </Formik>
+                >
+                  <Typography
+                    gridColumn="span 2"
+                    variant="h5"
+                    color="black"
+                    mt="2vh"
+                    mb="2vh"
+                  >
+                    Product Title
+                  </Typography>
+                  <TextField
+                    fullWidth
+                    variant="outlined"
+                    type="text"
+                    label="title"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={values.email}
+                    name="email"
+                    InputProps={{ style: inputStyles }}
+                    InputLabelProps={{ style: inputLabelStyles }}
+                    // error={!!touched.email && !!errors.email}
+                    // helperText={touched.email && errors.email}
+                    sx={{
+                      gridColumn: "span 4",
+                    }}
+                  />
+                  <Typography
+                    gridColumn="span 2"
+                    variant="h5"
+                    color="black"
+                    mt="4vh"
+                    mb="2vh"
+                  >
+                    Product Tags
+                  </Typography>
+                  <TextField
+                    fullWidth
+                    variant="outlined"
+                    type="text"
+                    label="Tags"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={values.contact}
+                    name="contact"
+                    multiline
+                    rows={10}
+                    InputProps={{ style: inputStyles1 }}
+                    InputLabelProps={{ style: inputLabelStyles }}
+                    // error={!!touched.contact && !!errors.contact}
+                    // helperText={touched.contact && errors.contact}
+                    sx={{ gridColumn: "span 4" }}
+                  />
+                </Box>
+                <Box display="flex" justifyContent="center" mt="20px">
+                  <Button type="submit" color="secondary" variant="contained">
+                    Generate
+                  </Button>
+                </Box>
+              </form>
+            )}
+          </Formik>
         </Box>
       </Box>
     </Box>
