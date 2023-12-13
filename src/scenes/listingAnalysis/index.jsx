@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { DataGrid, GRID_STRING_COL_DEF } from "@mui/x-data-grid";
 import { SparkLineChart } from "@mui/x-charts/SparkLineChart";
 import { tokens } from "../../theme";
-import { Box, useTheme, Button } from "@mui/material";
+import { Box, useTheme, Button, Typography, IconButton } from "@mui/material";
 import { mockListing } from "../../data/mockData";
 import Topbar from "../../scenes/global/Topbar";
 import Sidebar from "../global/Sidebar";
+import InputBase from "@mui/material/InputBase";
+import SearchIcon from "@mui/icons-material/Search";
 
 import { Modal, ModalBody } from "react-modern-modal";
 
@@ -258,35 +260,66 @@ export default function Contacts() {
       <Box gridColumn="span 2">
         <Sidebar />
       </Box>
-      <Box gridColumn="span 13" p="20px" height="100vh">
-        <Topbar></Topbar>
+      <Box gridColumn="span 13" height="100vh">
         <Box
-          m="40px 0 0 0"
-          width="100%"
-          height="75vh"
-          display="flex"
-          flexDirection="column"
-          overflowX="scroll"
+          height="35vh"
+          sx={{
+            backgroundImage:
+              'url("https://app.everbee.io/ligthTheme-bg-img.png")',
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+          }}
+        ></Box>
+        <Box
+          mt="-30vh"
+          pl="2%"
+          pr="2%"
+          pt="2%"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none !important",
+              height: "65vh !important",
+              width: "100%",
             },
             "& .MuiDataGrid-cell": {
               border: "none !important",
             },
             "& .name-column--cell": {
               color: colors.primary[500],
+              fontSize: "16px",
               border: "none !important",
             },
+
+            "& .MuiDataGrid-cell:focus": {
+              outline: "none !important",
+            },
             "& .MuiDataGrid-columnHeaders": {
-              backgroundColor: colors.greenAccent[700],
-              border: "none !important",
+              backgroundColor: "white",
+              color: "black",
+              borderBottom: "1px solid grey",
+            },
+            "& .MuiDataGrid-sortIcon": {
+              color: "#ff0000",
+            },
+            "& .MuiDataGrid-columnHeader:focus": {
+              outline: "none !important",
+            },
+            "& .MuiDataGrid-menuIcon": {
+              color: "#00ff00",
+            },
+            "& .MuiDataGrid-menuIcon:focus": {
+              outline: "none !important",
+            },
+            "& .MuiDataGrid-sortIcon:focus": {
+              outline: "none",
             },
             "& .MuiDataGrid-virtualScroller": {
               backgroundColor: colors.primary[50],
               border: "none !important",
             },
             "& .MuiDataGrid-footerContainer": {
+              display: "none",
               border: "none !important",
               backgroundColor: colors.greenAccent[700],
             },
@@ -296,11 +329,37 @@ export default function Contacts() {
             },
           }}
         >
-          <DataGrid
-            rows={mockListing}
-            columns={columns}
-            onRowClick={handleOpen}
-          />
+          <Typography color="white" pb="2vh" fontWeight="600" fontSize="2rem">
+            Listing Analytics
+          </Typography>
+          <Box
+            backgroundColor="white"
+            height="80vh"
+            p="2%"
+            border="1px solid white"
+            borderRadius="2rem"
+          >
+            <Box
+              display="flex"
+              border="1px solid black"
+              backgroundColor={colors.primary[50]}
+              borderRadius="10px"
+              mb="2vh"
+            >
+              <InputBase
+                sx={{ ml: 2, flex: 1, width: 350, color: "black" }}
+                placeholder="Search Products"
+              />
+              <IconButton type="button" sx={{ p: 1, color: "black" }}>
+                <SearchIcon />
+              </IconButton>
+            </Box>
+            <DataGrid
+              rows={mockListing}
+              columns={columns}
+              onRowClick={handleOpen}
+            />
+          </Box>
         </Box>
         <Modal size="lg" isOpen={isOpen} onClose={handleClose}>
           {/* <ModalHeader>Sign Up</ModalHeader> */}

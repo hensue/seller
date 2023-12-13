@@ -50,12 +50,12 @@ const Sidebar = () => {
   return isNonMobile ? (
     <Box
       height="100vh"
+      width="13.3%"
       sx={{
-        position: 'sticky',
-        top: 0,
+        position: "fixed",
+        top: "0",
         "& .pro-sidebar-inner": {
-          // background: "linear-gradient(257deg,#e5ffea,rgba(224,255,229,0))",
-          backgroundColor:"white"
+          backgroundColor: "white",
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -143,14 +143,14 @@ const Sidebar = () => {
               Research Tools
             </Typography>
             <Item
-              title="Product Analysis"
+              title="Product Analytics"
               to="/team"
               icon={<AnalyticsOutlined />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Listing Analysis"
+              title="Listing Analytics"
               to="/contacts"
               icon={<ContactsOutlinedIcon />}
               selected={selected}

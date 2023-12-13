@@ -3,11 +3,13 @@ import { useState } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataTeam } from "../../data/mockData";
-import { Box, useTheme, Button } from "@mui/material";
+import { IconButton, Box, useTheme, Button, Typography } from "@mui/material";
 import LockIcon from "@mui/icons-material/Lock";
 import Sidebar from "../global/Sidebar1";
 import Topbar from "../../scenes/global/Topbar";
 import Sidebar1 from "../global/Sidebar";
+import InputBase from "@mui/material/InputBase";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function ColumnSelectorGrid() {
   const [selectedRow, setSelectedRow] = useState(null);
@@ -18,9 +20,9 @@ export default function ColumnSelectorGrid() {
     {
       field: "photo",
       headerName: "Photo",
-      headerAlign: "center",
+      headerAlign: "left",
       cellClassName: "name-column--cell",
-      width: 50,
+      width: 100,
       renderCell: ({ row: { access } }) => {
         return (
           <Box
@@ -28,7 +30,7 @@ export default function ColumnSelectorGrid() {
             m="0 auto"
             // p="5px"
             display="flex"
-            justifyContent="center"
+            justifyContent="left"
           >
             <img
               alt="profile-user"
@@ -44,7 +46,6 @@ export default function ColumnSelectorGrid() {
     {
       field: "name",
       headerName: "Name",
-      flex: 1,
       cellClassName: "name-column--cell",
       width: 100,
     },
@@ -59,22 +60,19 @@ export default function ColumnSelectorGrid() {
     {
       field: "shopName",
       headerName: "Shop Name",
-      flex: 1,
       width: 150,
       cellClassName: "name-column--cell",
     },
     {
       field: "price",
       headerName: "Price",
-      flex: 1,
-      width: 150,
+      width: 100,
       cellClassName: "name-column--cell",
     },
     {
       field: "moRevenue",
       headerName: "Mo.Revenue",
-      flex: 1,
-      width: 150,
+      width: 100,
       cellClassName: "name-column--cell",
       renderCell: ({ row: { access } }) => {
         return <LockIcon fontSize="small" color="secondary" />;
@@ -83,8 +81,7 @@ export default function ColumnSelectorGrid() {
     {
       field: "totalSales",
       headerName: "Total Sales",
-      flex: 1,
-      width: 150,
+      width: 100,
       cellClassName: "name-column--cell",
       renderCell: ({ row: { access } }) => {
         return <LockIcon fontSize="small" color="secondary" />;
@@ -93,56 +90,48 @@ export default function ColumnSelectorGrid() {
     {
       field: "reviews",
       headerName: "Reviews",
-      flex: 1,
       width: 150,
       cellClassName: "name-column--cell",
     },
     {
       field: "listingAge",
       headerName: "Listing Age",
-      flex: 1,
       width: 150,
       cellClassName: "name-column--cell",
     },
     {
       field: "favorites",
       headerName: "Favorites",
-      flex: 1,
       width: 150,
       cellClassName: "name-column--cell",
     },
     {
       field: "avgReviews",
       headerName: "Avg Reviews",
-      flex: 1,
       width: 150,
       cellClassName: "name-column--cell",
     },
     {
       field: "views",
       headerName: "Views",
-      flex: 1,
       width: 150,
       cellClassName: "name-column--cell",
     },
     {
       field: "category",
       headerName: "Category",
-      flex: 1,
       width: 150,
       cellClassName: "name-column--cell",
     },
     {
       field: "shopAge",
       headerName: "Shop Age",
-      flex: 1,
       width: 150,
       cellClassName: "name-column--cell",
     },
     {
       field: "visibilityScore",
       headerName: "Visibility Score",
-      flex: 1,
       width: 150,
       cellClassName: "name-column--cell",
       renderCell: ({ row: { access } }) => {
@@ -152,7 +141,6 @@ export default function ColumnSelectorGrid() {
     {
       field: "conversionRate",
       headerName: "Conversion Rate",
-      flex: 1,
       width: 150,
       cellClassName: "name-column--cell",
       renderCell: ({ row: { access } }) => {
@@ -162,7 +150,6 @@ export default function ColumnSelectorGrid() {
     {
       field: "totalShopSales",
       headerName: "Total Shop Sales",
-      flex: 1,
       width: 150,
       cellClassName: "name-column--cell",
     },
@@ -179,17 +166,31 @@ export default function ColumnSelectorGrid() {
 
   return (
     <Box display="grid" gridTemplateColumns="repeat(15, 1fr)">
-       <Box gridColumn="span 2">
+      <Box gridColumn="span 2">
         <Sidebar1 />
       </Box>
-      <Box gridColumn="span 13" p="20px" height="100vh">
-        <Topbar></Topbar>
+
+      <Box gridColumn="span 13" height="100vh">
         <Box
-          m="40px 0 0 0"
-          height="75vh"
+          height="35vh"
+          sx={{
+            backgroundImage:
+              'url("https://app.everbee.io/ligthTheme-bg-img.png")',
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+          }}
+        ></Box>
+        <Box
+          mt="-30vh"
+          pl="2%"
+          pr="2%"
+          pt="2%"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none !important",
+              height: "65vh !important",
+              width: "100%",
             },
             "& .MuiDataGrid-cell": {
               border: "none !important",
@@ -199,15 +200,36 @@ export default function ColumnSelectorGrid() {
               fontSize: "16px",
               border: "none !important",
             },
+
+            "& .MuiDataGrid-cell:focus": {
+              outline: "none !important",
+            },
             "& .MuiDataGrid-columnHeaders": {
-              backgroundColor: colors.greenAccent[700],
-              border: "none !important",
+              backgroundColor: "white",
+              color: "black",
+              borderBottom: "1px solid grey",
+            },
+            "& .MuiDataGrid-sortIcon": {
+              color: "#ff0000",
+            },
+            "& .MuiDataGrid-columnHeader:focus": {
+              outline: "none !important",
+            },
+            "& .MuiDataGrid-menuIcon": {
+              color: "#00ff00",
+            },
+            "& .MuiDataGrid-menuIcon:focus": {
+              outline: "none !important",
+            },
+            "& .MuiDataGrid-sortIcon:focus": {
+              outline: "none",
             },
             "& .MuiDataGrid-virtualScroller": {
               backgroundColor: colors.primary[50],
               border: "none !important",
             },
             "& .MuiDataGrid-footerContainer": {
+              display: "none",
               border: "none !important",
               backgroundColor: colors.greenAccent[700],
             },
@@ -217,14 +239,40 @@ export default function ColumnSelectorGrid() {
             },
           }}
         >
-          <DataGrid
-            rows={mockDataTeam}
-            columns={columns}
-            slots={{
-              toolbar: GridToolbar,
-            }}
-            onRowClick={handleRowClick}
-          />
+          <Typography color="white" pb="2vh" fontWeight="600" fontSize="2rem">
+            Product Analytics
+          </Typography>
+          <Box
+            backgroundColor="white"
+            height="80vh"
+            p="2%"
+            border="1px solid white"
+            borderRadius="2rem"
+          >
+            <Box
+              display="flex"
+              border="1px solid black"
+              backgroundColor={colors.primary[50]}
+              borderRadius="10px"
+              mb="2vh"
+            >
+              <InputBase
+                sx={{ ml: 2, flex: 1, width: 350, color: "black" }}
+                placeholder="Search Products"
+              />
+              <IconButton type="button" sx={{ p: 1, color: "black" }}>
+                <SearchIcon />
+              </IconButton>
+            </Box>
+            <DataGrid
+              rows={mockDataTeam}
+              columns={columns}
+              slots={{
+                toolbar: GridToolbar,
+              }}
+              onRowClick={handleRowClick}
+            />
+          </Box>
         </Box>
         {isModalOpen && <Sidebar rowData={selectedRow} onClose={closeModal} />}
       </Box>

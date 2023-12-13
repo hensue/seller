@@ -38,7 +38,18 @@ const Generator = () => {
       <Box gridColumn="span 2">
         <Sidebar />
       </Box>
-      <Box gridColumn="span 13" pt="10vh" pl="10%" pr="10%" height="100vh">
+      <Box gridColumn="span 13"height="100vh">
+      <Box
+          height="35vh"
+          sx={{
+            backgroundImage:
+              'url("https://app.everbee.io/ligthTheme-bg-img.png")',
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+          }}
+        ></Box>
+        <Box mt="-30vh"  pt="10vh" pl="10%" pr="10%" >
         <Header
           title="Listing Generator"
           subtitle="Etsy Description Generatpr, AI Written, SEO Optimized Description with One Click."
@@ -114,6 +125,7 @@ const Generator = () => {
             </form>
           )}
         </Formik>
+        </Box>
       </Box>
     </Box>
   );

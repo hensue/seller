@@ -1,4 +1,4 @@
-import { Box, IconButton, useTheme } from "@mui/material";
+import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "../../theme";
 import InputBase from "@mui/material/InputBase";
@@ -7,6 +7,7 @@ import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import { ArrowDropDown } from "@mui/icons-material";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 
@@ -16,10 +17,20 @@ const Topbar = () => {
   const colorMode = useContext(ColorModeContext);
 
   return (
-    <Box display="grid" mt="4vh" gridTemplateColumns="repeat(15, 1fr)" gap="20px">
+    <Box
+      display="grid"
+      pt="8vh"
+      pl="4%"
+      pr="4%"
+      gridTemplateColumns="repeat(15, 1fr)"
+      gap="20px"
+    >
       {/* ROW 3 */}
       <Box gridColumn="span 5" gridRow="span 2">
-        <Box
+        <Typography fontSize="32px" fontWeight="700">
+          Hello, Linh and Symone
+        </Typography>
+        {/* <Box
           display="flex"
           backgroundColor={colors.primary[50]}
           borderRadius="10px"
@@ -31,10 +42,15 @@ const Topbar = () => {
           <IconButton type="button" sx={{ p: 1, color: "black" }}>
             <SearchIcon />
           </IconButton>
-        </Box>
+        </Box> */}
       </Box>
 
-      <Box gridColumn="span 10" display="flex" justifyContent="flex-end" gridRow="span 2">
+      <Box
+        gridColumn="span 10"
+        display="flex"
+        justifyContent="flex-end"
+        gridRow="span 2"
+      >
         {/* <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (
             <DarkModeOutlinedIcon />
@@ -45,11 +61,15 @@ const Topbar = () => {
         <IconButton>
           <NotificationsOutlinedIcon />
         </IconButton> */}
-        <IconButton style={{ color: "black" }}>
+        {/* <IconButton style={{ color: "black" }}>
           <SettingsOutlinedIcon />
-        </IconButton>
+        </IconButton> */}
         <IconButton style={{ color: "black" }}>
           <PersonOutlinedIcon />
+          <Typography ml="10%" color="white" fontSize="20px">
+            Linh
+          </Typography>
+          <ArrowDropDown color="black" />
         </IconButton>
       </Box>
     </Box>
